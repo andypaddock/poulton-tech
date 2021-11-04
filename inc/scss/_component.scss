@@ -1,0 +1,354 @@
+/*! == COMPONENTS == */
+
+.button {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0.75em 1em;
+    color: $brand-mid-grey;
+    background: white;
+    text-align: left;
+    font-family: $body-font;
+    font-weight: 400;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    border-radius: 0;
+    letter-spacing: 1px;
+    transition: all 0.5s ease;
+    text-rendering: geometricPrecision; /*fix rendering issues on different buttons*/
+    cursor: pointer;
+    
+    i {
+        position: absolute;
+        right: 0.25em;
+        top: 0.75em;
+        font-size: 1.25em;
+    }
+    
+    span {
+        display: block;
+        font-weight: 200;
+        text-transform: none;
+        font-style: italic;
+        font-size: 1.2em;
+    }
+	
+	
+	&__dark {
+		background: $brand-mid-grey;
+		color: white;
+		padding: 0.75em 3em;
+		
+		&:hover {
+			background: darken($brand-mid-grey, 10%);
+			color: white;
+		}
+	}
+	
+	&__transparent {
+		background: transparent;
+		color: $brand-mid-grey;
+		border: 1px solid $brand-mid-grey;
+	}
+}
+
+a.next-section {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    height: 4em;
+    transform: translateX(-50%);
+    left: 50%;
+    font-family:$supporting-font;
+    letter-spacing: 1px;
+    color: white;
+    margin-bottom: 1em;
+    z-index: 10;
+    
+     &:before {
+        position: absolute;
+        content: '';
+        bottom: -1em;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 3.5em;
+        height: 3.5em;
+        background:url(inc/img/arrow-shape.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition: bottom 0.5s ease;
+        border-radius: 50px;
+    }
+    
+    &:hover:before {
+        bottom:-10px;
+    }
+}
+
+.poulton {
+    text-align: center;
+    margin-top: -5px;
+ 
+    #logo {
+        width:120px;
+        height:50px;
+    }
+
+    #poulton {
+        opacity:0.6;
+        transition:opacity 0.5s ease-in-out;
+    
+        path {
+            fill: white;
+        }
+    }
+
+    #created {
+        opacity:0;
+        transform: translateY(50px);
+        transition: 1s transform ease, 2s opacity ease;
+
+        path {
+            fill: white;
+        }
+    }
+
+    &:hover {
+        cursor:pointer;
+
+        #poulton {
+            opacity:0.8;
+        }
+
+        #created {
+              opacity:0.8;
+              transform: translateY(0);
+        }
+    }
+}
+
+.map-wrapper {
+	padding: 0;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	
+	.heading {
+    	position: absolute;
+    	width: 100%;
+    	margin-top: 1em;
+    	text-align: center;
+    	z-index: 10;
+    	color: white;
+    	text-shadow: 0 0 20px black;
+    	
+        	svg {
+            	position: absolute;
+            	height:1em;
+            	width:1em;
+            	bottom: -1em;
+            	left:48%;
+            	fill:white;
+        	}
+	}
+}
+
+#bell-map-contact {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	font: 1em 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	
+	.marker {
+		background-color: white;
+		width: 30px;
+		height: 30px;
+		border: 5px solid hsl(0, 0%, 20%);
+		border-radius: 50%;
+		cursor: pointer;
+	}
+	
+	.mapboxgl-ctrl-geocoder--button {
+		outline: none;
+	}
+	
+	.mapboxgl-canvas {
+		outline: none;
+	}
+	
+	.mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl.mapboxgl-ctrl-attrib {
+        display: none;
+	}
+	
+	.mapboxgl-popup-tip {
+		display: none;
+	}
+	
+	.mapboxgl-popup {
+		max-width: 250px;
+		will-change: unset;
+		line-height: 1.5;
+		width: 250px;
+		z-index: 10;
+	}
+	
+	.mapboxgl-popup-content {
+		text-align: left;
+		color: $brand-primary;
+		padding: 1.1em;
+		position: relative;
+		background: $brand-light-grey;
+		color: $brand-primary;
+		border-radius: 0;
+		box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.1), 1px -1px 2px rgba(0, 0, 0, 0.1), -1px 1px 2px rgba(0, 0, 0, 0.1), 1px 1px 2px rgba(0, 0, 0, 0.1);
+		
+		.mapboxgl-popup-close-button {
+			font-size: 20px;
+			outline: none;
+			position: absolute;
+			top: -0.3em;
+			right: -0.3em;
+			background: $brand-primary;
+			color: white;
+			border-radius: 100%;
+			border: 3px solid $brand-light-grey;
+			cursor: pointer;
+			width: 35px;
+			height: 35px;
+			line-height: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			
+			&:before {
+				position: absolute;
+				top: -3px;
+				right: -3px;
+				width: calc(100% + 6px);
+				height: calc(100% + 6px);
+				content: "";
+				border-radius: 100%;
+				z-index: -1;
+				box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.1), 1px -1px 2px rgba(0, 0, 0, 0.1), -1px 1px 2px rgba(0, 0, 0, 0.1), 1px 1px 2px rgba(0, 0, 0, 0.1);
+			}
+		}
+		
+		.buttons-popup {
+			width: 100%;
+	        text-align: center;
+		
+			a {
+				line-height: 1.4em;
+				display: inline-block;
+		        width: 100%;
+		        background-color: $brand-primary;
+		        border: 1px solid white;
+		        color: white;
+		        font-size: 14px;
+			    padding: 5px;
+			    margin: 5px 0px;
+			    letter-spacing: 0.1em;
+			    cursor: pointer;
+			    font-family: $body-font;
+			    font-weight: 200;
+			}
+		}
+		
+		div {
+			color: $brand-primary;
+			
+			&.title {
+				font-size: 1.5em;
+				display: inline-block;
+				text-align: center;
+				padding: 0 0 0.3em 0;
+				border-bottom: 1px solid $brand-primary;
+				font-family: $supporting-font;
+				
+				span {
+					font-size: 0.5em;
+					transform: translateY(-0.6em);
+					border-bottom: 1px solid $brand-primary;
+					display: inline-block;
+				}
+			}
+			
+			&.name {
+			    font-size: 1.5em;
+			    line-height: 1em;
+			    margin-bottom: 1em;
+
+			}
+			
+			&.phone, &.address, &.email {
+				font-size: 1.2em;
+				font-weight: 400;
+				margin-left: 1em;
+				margin-top: 1em;
+			}
+			
+			&.address {
+				font-weight: 100;
+			}
+			
+			&.email {
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+#contact-form {
+	
+	p {
+		margin: 0;
+		font-size: 1em;
+	}
+	
+	.wpcf7-text, .wpcf7-textarea {
+		border: none;
+		background: darken($brand-light-grey, 5%);
+		font-family: $body-font;
+		width: 100%;
+		font-size: 1em;
+		margin-top: 1em;
+		padding: 0.75em;
+		outline: none;
+		color: $brand-primary;
+		
+		&::placeholder {
+			text-transform: uppercase;
+			font-weight: 400;
+			font-size: 0.9em;
+			color: $brand-mid-grey;
+		}
+	}
+	
+	.wpcf7-text[name=your-name] {
+		margin-top: 0;
+	}
+	
+	.wpcf7-submit {
+		margin-top: 1em;
+		font-size: 0.9em;
+	}
+	
+	br {
+		display: none;
+	}
+
+	.wpcf7-not-valid-tip {
+		color: lighten($brand-primary, 10%) !important;
+		font-size: 0.85em;
+	}
+	
+	.wpcf7-response-output {
+		font-size: 0.85em;
+		margin: 1em 0 0 0;
+		border: none;
+		background: none;
+		color: black;
+		background: hsla(0, 0%, 0%, 0.2);
+	}
+}
+

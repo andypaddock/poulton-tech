@@ -1,0 +1,200 @@
+/*! == MEDIA QUERIES == */
+
+/*===========MEDIA QUERIES==========*/
+
+@each $name, $size in $breakpoints {
+	
+	@media (max-width: #{$size}) {
+		
+		@for $i from 1 through $col-count {
+			
+			.container.cols-#{$name}-#{$i} > .col {
+				grid-column: span $i !important;
+			}
+		}
+		@for $gridColumnOne from 1 to $col-count {
+        @for $gridColumnTwo from 1 to $col-count {
+	            &.cols-#{$name}-#{$gridColumnOne}-#{$gridColumnTwo}{
+	                > .col:nth-of-type(2n -1) {
+	                    grid-column: span $gridColumnOne !important;     
+	                }       
+	                > .col:nth-of-type(2n) {
+	                    grid-column: span $gridColumnTwo !important;     
+	                } 
+	            }
+	        }
+	    }
+	    @for $gridOffset from 1 to $col-count {
+	        @for $grid from 1 to $col-count {
+	            &.cols-offset-#{$name}-#{$gridOffset}-#{$grid} > .col{
+	                grid-column-start:($gridOffset + 1) !important;
+	                grid-column-end:(($gridOffset + 1) + $grid) !important;
+	            }
+	        }
+	    }
+		.align-#{$name}-center{
+			text-align: center;
+		}
+		.align-#{$name}-left{
+			text-align: left;
+		}
+		.hide-#{$name}{
+			display: none;
+		}
+		.show-#{$name}{
+			display: block;
+		}
+
+		$distance: (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20); // Amount string.
+		$sides: (top, bottom, left, right); // Sides var
+
+		@each $amount in $distance {
+		    @each $side in $sides {
+		        .m-#{$name}-#{str-slice($side, 0, 1)}#{$amount} {
+		            margin-#{$side}: #{$amount}em ;
+		        }
+		        .p-#{$name}-#{str-slice($side, 0, 1)}#{$amount} {
+		            padding-#{$side}: #{$amount}em;
+		        }
+		    }
+		}
+	}
+}
+
+/*===========LARGE (1200px)==========*/
+
+@media only screen and (max-width: 1200px) {
+
+/*---GLOBALS---*/ 
+
+/*---HEADER---*/ 
+
+/*---CONTENT---*/
+
+/*---FOOTER---*/
+
+}/*---end large mq---*/
+
+
+/*===========MEDIUM (992px)==========*/
+
+@media only screen and (max-width: 992px) {
+  
+/*---GLOBALS---*/ 
+
+body {
+    font-size: 0.75em;
+}
+ 
+/*---HEADER---*/
+
+/*---CONTENT---*/
+.content__twocolumn{
+	column-count: 1;
+}
+
+/*---FOOTER---*/
+
+}/*---end medium mq---*/
+
+
+/*===========SMALL (768px)==========*/
+
+@media only screen and (max-width: 768px) {
+
+/*---GLOBALS---*/
+
+body {
+  font-size: 0.65em;
+}
+
+.heading{
+	&__xl{
+
+	}
+	&__lg{
+		font-size:rem-calc(18);
+	}
+	&__md{
+
+	}
+	&__sm{
+
+	}
+	&__xs{
+
+	}
+}
+
+/*---HEADER---*/
+.nav-content{
+	display: none;
+}
+
+/*---CONTENT---*/
+.grid-gap{
+	grid-gap:0.25em;
+}
+.form{
+    max-width: 100%;
+}
+.ptIcon{
+	max-height: rem-calc(45);
+}
+/*---FOOTER---*/
+.footer .socket .colophon, .footer .socket .mandatory{
+	justify-content: center;
+}
+
+}/*---end small mq---*/
+
+
+/*===========EXTRA SMALL (576px)==========*/
+
+@media only screen and (max-width: 576px) {
+  
+/*---GLOBALS---*/
+
+/*---HEADER---*/
+
+/*---CONTENT---*/
+.image-frame{
+	height:30vw;
+}
+
+/*---FOOTER---*/
+
+}/*---end extra small mq---*/
+
+
+/*===========MAPBOX (640px)==========*/
+
+@media screen and (max-width: 640px) {
+	
+.mapboxgl-ctrl-geocoder.mapboxgl-ctrl {
+	width: 240px;
+	font-size: 15px;
+	line-height: 20px;
+	max-width: 360px;
+}
+
+.mapboxgl-ctrl-geocoder--icon-search {
+	top: 8px;
+	left: 7px;
+	width: 20px;
+	height: 20px;
+}
+
+.mapboxgl-ctrl-geocoder--icon-close {
+    width: 16px;
+    height: 16px;
+    margin-top: 3px;
+    margin-right: 0;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+	height: 36px;
+    padding: 6px 35px;
+}
+	
+}/*---end mapbox mq---*/

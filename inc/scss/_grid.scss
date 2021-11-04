@@ -1,0 +1,116 @@
+/*=====MASTER GRID RULES=====*/
+
+.container {
+    display:grid;
+    grid-template-columns: repeat($col-count, 1fr);
+    grid-gap: $grid-gap;
+    max-width: $container-width;
+    margin: 0 auto;
+
+    &.fullwidth {
+        max-width: none;
+    }
+
+    &.no-gutter {
+        grid-gap:0;
+    }
+
+    &.no-gutter-r {
+        grid-row-gap:0;
+    }
+
+    &.no-gutter-c {
+        grid-column-gap:0;
+    }
+
+    &.gutter-sm {
+	    grid-gap: 1em;
+    }
+
+    &.align-horiz-l > .col {
+        justify-self: flex-start;
+    }
+
+    &.align-horiz-c > .col {
+        justify-self: center;
+    }
+
+    &.align-horiz-r > .col {
+        justify-self: flex-end;
+    }
+
+    &.align-vert-t > .col {
+        align-self: flex-start;
+    }
+
+    &.align-vert-c > .col {
+        align-self: center;
+    }
+
+    &.align-vert-b > .col {
+        align-self: flex-end;
+    }
+
+    > .col {
+        grid-column: span 24;
+    }
+
+    @for $grid from 1 to $col-count {
+
+        &.cols-#{$grid} > .col{
+            grid-column: span $grid;
+        }
+    }
+
+    @for $gridOffset from 1 to $col-count {
+        @for $grid from 1 to $col-count {
+            &.cols-offset-#{$gridOffset}-#{$grid} > .col{
+                grid-column-start:($gridOffset + 1);
+                grid-column-end:(($gridOffset + 1) + $grid);
+            }
+        }
+    }
+    @for $gridColumnOne from 1 to $col-count {
+        @for $gridColumnTwo from 1 to $col-count {
+            &.cols-#{$gridColumnOne}-#{$gridColumnTwo}{
+                > .col:nth-of-type(2n -1) {
+                    grid-column: span $gridColumnOne;     
+                }       
+                > .col:nth-of-type(2n) {
+                    grid-column: span $gridColumnTwo;     
+                } 
+            }
+        }
+    }
+    &.cols-6-6-12{
+        @include gridThreeCol(6, 6, 12);
+    }
+}
+
+.container {
+
+    > .col {
+        width:100%;
+    }
+
+    > .col {
+        &.align-horiz-l {
+            justify-self: flex-start;
+        }
+        &.align-horiz-c {
+            justify-self: center;
+        }
+        &.align-horiz-r {
+            justify-self: flex-end;
+        }
+        &.align-vert-t {
+            align-self: flex-start;
+        }
+        &.align-vert-c {
+            align-self: center;
+        }
+        &.align-vert-b {
+            align-self: flex-end;
+        }
+    }
+}

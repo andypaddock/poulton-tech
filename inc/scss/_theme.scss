@@ -1,0 +1,773 @@
+/*! == THEME STYLES == */
+/*===========GLOBAL==========*/
+.border{
+    border:0px solid transparent;
+    &__bottom{
+        border-bottom:1px solid $brand-primary;
+    }
+    &__dotted{
+        border-style: dotted;
+    }
+    &__thin{
+        border-width:rem-calc(2);
+    }
+}
+.list{
+    &__no-padding{
+        ul{
+            padding-left:0;
+        }
+    }
+    &__min-padding{
+        ul{
+            padding-left:rem-calc(15);
+        }
+    }
+    &__style-line{
+        li{
+            list-style:none;
+            position:relative;
+            &:before{
+                height:1px;
+                width:rem-calc(10);
+                background-color:white;
+                position:absolute;
+                content:'';
+                top:50%;
+                transform:translateY(-50%);
+                left:rem-calc(-15);
+                background-color:$brand-primary;
+            }
+        }
+    }
+}
+.heading{
+    &__primary{
+        color:$brand-primary;
+    }
+}
+.content{
+    &__twocolumn{
+        column-count:2;
+        p{
+            margin-top:0;
+        }
+    }
+}
+.button{
+    border:none;
+    &__transparent{
+        background-color:transparent;
+        color:$brand-primary;
+    }
+    &__border-round{
+        border-radius:50px;
+        padding:1rem rem-calc(50);
+        border-left:5px solid $brand-primary;
+        border-right:5px solid $brand-primary;
+        border-top:5px solid transparent;
+        border-bottom:5px solid transparent;
+        &:hover{
+            border-radius:0;
+            color: white;
+        }
+    }
+    &__animation{
+        &:hover{
+            background-color:$brand-primary;
+            animation-name: buttonHover;
+            animation-duration: 1s;
+            animation-iteration-count: 1;
+        }
+    }
+}
+/*===========HEADER==========*/
+.loaded{
+    #poultonLogo{
+        .cls-1{
+            transition:$slowEffect;
+        }
+        .circle{
+            fill:$brand-primary;
+            transition:$slowEffect;
+        }
+        #circleTop{
+            transform:translate(-128.46px, -393.33px);
+        }
+        #circleBottom{
+            transform:translate(-128.46px, -393.33px)
+        }
+        &:hover{
+            .cls-1{
+                fill:$brand-primary;
+                transition:$slowEffect;
+            }
+            #circleTop{
+                transform:translate(-128.46px, -380px);
+                transition:$slowEffect;
+            }
+            #circleBottom{
+                transform:translate(-128.46px, -402px);
+                transition:$slowEffect;
+            }
+        }   
+    }
+}
+
+.offscreen-nav {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    background: $brand-secondary;
+    transition:left 0.5s ease;
+    z-index:190;
+    &.show {
+        left:0;
+    }
+    > div{
+        width:100%;
+    }
+    .mainMenu{
+        text-align:left;
+        height:100%;
+        text-transform: uppercase;
+        ul{
+            list-style:none;
+            padding-left:0;
+            display: flex;
+            flex-direction: column;
+            li{
+                margin-top:rem-calc(50);
+                margin-bottom:rem-calc(50);
+                position:relative;
+                font-weight:100;
+                &:before{
+                    position:absolute;
+                    left:rem-calc(-60);
+                    top:50%;
+                    height:3px;
+                    width:rem-calc(25);
+                    background-color:$brand-primary;
+                    content:'';
+                    transition:$fastEffect;
+                    opacity: 0;
+                }
+                &:hover{
+                    font-weight:400;
+                    &:before{
+                        left:rem-calc(-50);
+                        opacity: 1;
+                        transition:$fastEffect;
+                    }
+                }
+            }
+        }
+        a{
+            color:white;
+            font-size:rem-calc(22);
+        }
+    }
+    .contact-details{
+        a{
+            color:white;
+        }
+    }
+}
+
+on-page-nav {
+    position: relative;
+    margin-top: 5em;
+    font-size:rem-calc(14);
+    transition:$fastEffect;
+    &.hideMenu{
+        opacity:0;
+        visibility:hidden;
+        transition:$fastEffect;
+    }
+
+    #prevSection{
+        display:none;
+    }
+    #nextSection{
+        position:absolute;
+        left:0;
+        #linkBox, #linkLine, #linkArrow{
+            transition:$fastEffect;
+        }
+        svg{
+
+        }
+        &:hover{
+            #linkBox, #linkLine, #linkArrow{
+                stroke:$brand-primary;
+                transition:$fastEffect;
+            }
+        }
+    }
+    .menu {
+        position: absolute;
+        height:calc(100vh - 15em);
+        ul{
+            padding-left:0;
+        }
+        li{
+            list-style:none;
+            a{
+                position:relative;
+                padding-left:rem-calc(30);
+                .nav-line{
+                    height:2px;
+                    width:rem-calc(25);
+                    background-color:white;
+                    position:absolute;
+                    content:'';
+                    top:60%;
+                    transform:translateY(-50%);
+                    left:0;
+                    transition:$fastEffect;
+
+                }
+                .nav-content{
+                    opacity:0;
+                    visibility: hidden;
+                    transition:$fastEffect;
+                }
+                &:hover{
+                    .nav-line{
+                        background-color:$brand-mid-grey;
+                    }
+                }
+            }
+        }
+        .active{
+            .nav-line{
+                background-color:$brand-primary;
+                transition:$fastEffect;
+            }
+            .nav-content{
+                opacity:1;
+                visibility: visible;
+                transition:$fastEffect;
+            }
+        }
+    }
+}
+
+#nav{
+    .menu-trigger{
+        display:flex;
+        text-transform:uppercase;
+        transition:$fastEffect;
+        align-items: center;
+        .hamburger{
+            margin-top:rem-calc(6);
+            padding:rem-calc(5) 0;
+            &:focus{
+                outline:none;
+            }
+        }
+        .hamburger-inner, .hamburger-inner:after, .hamburger-inner:before{
+            background-color:white;
+            height:2px;
+            width:rem-calc(25);
+        }
+    }
+    .hideItem{
+        display:none;
+    }
+}
+
+/*===========BODY==========*/
+.hero__container{
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center;
+    position: relative;
+    &:before{
+        background-color:rgba($brand-secondary, 0.7);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: '';
+        position:absolute;
+        z-index: 1;
+    }
+    > div{
+        position:relative;
+        z-index: 2;
+    }
+}
+.specifications{
+    p{
+        margin-top:0; 
+    }
+}
+.specification_table{
+    width: 100%;
+    th{
+        text-align: left;
+        padding-right:rem-calc(30);
+    }
+    td{
+        padding:rem-calc(20) rem-calc(30) rem-calc(20) 0;
+        color:$brand-primary;
+        &.cellBorder{
+            border-bottom:1px dotted $brand-primary;
+        }
+    }
+    tr{
+        td{
+            &:first-child{
+                color:white;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+.social{
+    list-style: none;
+    padding:0;
+    display: flex;
+    li{
+        margin-right: rem-calc(50);
+        img{
+            height: rem-calc(28);
+        }
+    }
+}
+
+.form{
+    max-width: 75%;
+    input, textarea{
+        padding:rem-calc(10);
+        ::placeholder{
+            color: $brand-secondary;
+        }
+    }
+    .textarea, .input{
+        width: 100%;
+        textarea, input{
+            width: 100%;
+        }
+    }
+    input[type="submit"]{
+        width: 100%;
+        background-color:transparent;
+        color:$brand-primary;
+        border-radius:50px;
+        padding:1rem rem-calc(50);
+        border-left:5px solid $brand-primary;
+        border-right:5px solid $brand-primary;
+        border-top:5px solid transparent;
+        border-bottom:5px solid transparent;
+        transition: $fastEffect;
+        &:hover{
+            border-radius:0;
+            color: white;
+            cursor: pointer;
+            background-color:$brand-primary;
+            animation-name: buttonHover;
+            animation-duration: 1s;
+            animation-iteration-count: 1;
+        }
+    }
+}
+
+@keyframes buttonHover{
+    0% {
+        background-color:transparent;
+        border-radius:50px;
+    }
+    20%{
+        background-color:transparent;
+    }
+    40%{
+        border-radius:0;
+    }
+    100%{
+        background-color:$brand-primary;
+    }
+}
+/*===========FOOTER==========*/
+
+
+
+
+
+/*===========IMAGE ANIMATION===========*/
+
+
+.image-frame {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 20vw;
+    #connectorContainer{
+        background-color: #516f9c;
+        width:30vw;
+        height:15vw;
+        position:absolute;
+        top:0vw;
+        left:50vw;
+        transform:translateX(-50%);
+        z-index:2;
+    }
+    .connectorDup{
+        height:3vw;
+        width:50vw;
+        background-color:#911bff;
+        position:absolute;
+        left:0;
+        opacity:0;
+        @for $i from 1 to 5 {
+            &:nth-child(4n - #{$i}){
+                top:5.5vw - (2vw * $i);
+            }
+        }
+    }
+    #barContainer{
+        background-color: #eb4034;
+        width: 400vw;
+        height: 2vw;
+        left: -200%;
+        position:absolute;
+        top: 6.5vw;
+        transform:translateX(-50%) translateY(0%);
+        z-index:1;
+    }
+    .flangeDup{
+        height:4vw;
+        width:50vw;
+        background-color:#1abfac;
+        position:absolute;
+        right:0;
+        opacity:0;
+        @for $i from 1 to 5 {
+            &:nth-of-type(4n - #{$i}){
+                top:5vw - (3vw * $i);
+            }
+        }
+    }
+    #flangeContainer{
+        background-color: #a0d9ae;
+        width:20vw;
+        height:10vw;
+        position:absolute;
+        top:2.5vw;
+        left:60vw;
+        transform:translateX(-50%);
+        z-index:2;
+        opacity:0;
+    }
+    #connectorContent{
+        position:absolute;
+        top:13vw;
+        left:34vw;
+        opacity:0;
+        #connectorContent1, #connectorContent2{
+            position:absolute;
+            top:rem-calc(20);
+            left:0;
+        }
+        #connectorContent2{
+            opacity:0;
+            width:max-content;
+        }
+    }
+    #flangeContent{
+        position:absolute;
+        top:13vw;
+        left:58vw;
+        opacity:0;
+        #flangeContent1, #flangeContent2{
+            position:absolute;
+            top:rem-calc(20);
+            left:0;
+        }
+        #flangeContent2{
+            opacity:0;
+            width:max-content;
+        }
+    }
+    #connectorPointer{
+        position:absolute;
+        top:7vw;
+        left:33vw;
+        height:15vh;
+        width:2vh;
+        z-index:10;
+        opacity:0;
+        svg{
+            max-height:100%;
+        }
+    }
+    #flangePointer{
+        position:absolute;
+        top:7vw;
+        left:57vw;
+        height:15vh;
+        width:2vh;
+        z-index:10;
+        opacity:0;
+        svg{
+            max-height:100%;
+        }
+    }
+    #connectorSelected{
+        position:absolute;
+        top:8vw;
+        left:32vw;
+        height:5vw;
+        width:5vw;
+        z-index:10;
+        opacity: 0;
+        transform:translateY(-50%);
+        svg{
+            max-height:100%;
+        }
+    }
+    #flangeSelected{
+        position:absolute;
+        top:8.5vw;
+        left:56vw;
+        height:6vw;
+        width:6vw;
+        z-index:10;
+        opacity: 0;
+        transform:translateY(-50%);
+        svg{
+            max-height:100%;
+        }
+    }
+    &.active{
+       #connectorContainer{
+        transform: translateX(-50%) scale(.15);
+        top:0vw;
+        left:35vw;
+        animation-name: connectorAnimation1;
+        animation-duration:4.5s;
+        }
+        .connectorDup, .flangeDup{
+            opacity:1;
+            transition:opacity .7s;
+            @for $i from 1 to 5 {
+                &:nth-of-type(4n - #{$i}){
+                    transition-delay:4.5s + (0.5s * $i);
+                }
+            }
+        }
+        #connectorContent, #flangeContent{
+            opacity:1;
+            transition: all .3s;
+            transition-delay:0.5s;
+            #connectorContent1, #flangeContent1{
+                opacity:0;
+                transition: all .3s;
+                transition-delay:3.5s;
+            }
+            #connectorContent2, #flangeContent2{
+                opacity:1;
+                transition: all .3s;
+                transition-delay:3.5s;
+            }
+        }
+        #barContainer{
+            transform:translateX(20%) translateY(0%) scale(.4);
+            animation-name: barAnimation1;
+            animation-duration:4.5s;
+        }
+        #flangeContainer{
+            opacity:1;
+            transform:translateX(-50%) scale(.4);
+            top:2.5vw;
+            left:60vw;
+            animation-name: flangeAnimation1;
+            animation-duration:4.5s;
+        }
+        #connectorPointer, #flangePointer{
+            opacity:0;
+            animation-name: connectorPointer1;
+            animation-duration:4.5s;
+        }
+        #connectorSelected, #flangeSelected{
+            opacity: 1;
+            transition:.3s;
+            transition-delay:5s
+        }
+    }
+    &.activeRugged{
+        #connectorContainer{
+        transform:translateX(-50%) scale(.5);
+        top:0vw;
+        left:50vw;
+        animation-name: connectorAnimation2;
+        animation-duration:1.5s;
+        }
+        .connectorDup, .flangeDup{
+            opacity:0;
+            transition:opacity .7s;
+            @for $i from 1 to 5 {
+                &:nth-of-type(4n - #{$i}){
+                    transition-delay:0s;
+                }
+            }
+        }
+        #barContainer{
+            transform: translateX(20%) translateY(0%) scale(1);
+            animation-name: barAnimation2;
+            animation-duration:1.5s;
+        }
+        #flangeContainer{
+            opacity:0;
+            transform: translateX(200%) translateY(-50px) scale(1);
+            animation-name: flangeAnimation2;
+            animation-duration:1.5s;
+            animation-timing-function: easeOutQuad;
+        }
+        #connectorContent, #flangeContent, #connectorSelected, #flangeSelected{
+            opacity:0;
+            transition: all .3s;
+        }
+    }
+    &.completeAnimation{
+        #connectorContainer{
+        transform:translateX(-50%) scale(.5);
+        top:10%;
+        left:50vw;
+        }
+        .connectorDup, .flangeDup{
+            opacity:0;
+        }
+        #barContainer{
+            transform: translateX(20%) translateY(0%) scale(1);
+        }
+        #flangeContainer{
+            opacity:0;
+            transform: translateX(200%) translateY(-50px) scale(1);
+        }
+        #connectorContent, #flangeContent, #connectorSelected, #flangeSelected{
+            opacity:0;
+        }
+    }
+}
+
+@keyframes connectorAnimation1{
+    0% {
+        transform: translateX(-50%) scale(1);
+        top:0vw;
+        left:50vw;
+    }
+    25% {
+        transform: translateX(-50%) scale(.5);
+        top:0vw;
+        left:40vw;
+    }
+    70% {
+        transform: translateX(-50%) scale(.5);
+        top:0vw;
+        left:40vw;
+    }
+    100% {
+        transform: translateX(-50%) scale(.15);
+        top:0vw;
+        left:35vw;
+    }
+}
+@keyframes barAnimation1{
+    0% {
+        transform:translateX(-50%) translateY(0%);
+    }
+    10% {
+        transform:translateX(-50%) translateY(0%);
+    }
+    30% {
+        transform:translateX(20%) translateY(0%);
+    }
+    70% {
+        transform:translateX(20%) translateY(0%);
+    }
+    100% {
+        transform:translateX(20%) translateY(0%) scale(.4);
+    }
+}
+@keyframes flangeAnimation1{
+    0% {
+        opacity:0;
+        transform: translateX(-50%) scale(1);
+        top:2.5vw;
+        left:65vw;
+    }
+    20% {
+        opacity:0;
+    }
+    30% {
+        opacity:1;
+    }
+    70%{
+        transform:translateX(-50%) scale(1);
+        top:2.5vw;
+        left:65vw;
+    }
+    100%{
+        transform:translateX(-50%) scale(.4);
+        top:2.5vw;
+        left:60vw;
+    }
+}
+@keyframes connectorPointer1{
+    0% {
+        opacity:0;
+    }
+    25% {
+        opacity:0;
+    }
+    30% {
+        opacity:1;
+    }
+    70% {
+        opacity:1;
+    }
+    100% {
+        opacity:0;
+    }
+}
+@keyframes connectorAnimation2{
+    0%{
+        transform: translateX(-50%) scale(.15);
+        top:0vw;
+        left:35vw;
+    }
+    100%{
+        transform:translateX(-50%) scale(.5);
+        top:0vw;
+        left:50vw;
+    }
+}
+@keyframes barAnimation2{
+    0%{
+        transform: translateX(20%) translateY(0%) scale(.4);
+    }
+    100%{
+        transform: translateX(20%) translateY(0%) scale(1);
+    }
+}
+@keyframes flangeAnimation2{
+    0%{
+        opacity:1;
+        transform:translateX(-50%) scale(.4);
+        top:2.5vw;
+        left:60vw;
+    }
+    100%{
+        opacity:0;
+        top:2.5vw;
+        left:100vw;
+        transform: translateX(200%) scale(1);
+    }
+}

@@ -1,0 +1,43 @@
+/*! == VARIABLES == */
+
+$brand-primary: hsl(196, 100%, 51%); //Light Blue
+$brand-secondary: hsl(211, 45%, 19%); // Dark Blue
+$brand-tertiary: hsl(211, 52%, 13%);
+$brand-light-grey: hsl(0, 0%, 93%);
+$brand-mid-grey: hsl(0, 0%, 44%);
+$brand-dark-grey: hsl(0, 0%, 20%);
+$body-bg: hsl(0, 0%, 100%);
+
+$brand-font: "zeitung", sans-serif;
+$body-font: "zeitung", sans-serif;
+$supporting-font: "zeitung", sans-serif;
+
+$fastEffect: all 0.5s ease;
+$slowEffect: all 1s ease;
+
+$container-width: 1400px;
+$sm-container-width: 1000px;
+$col-count: 24;
+$grid-gap: 0;
+
+$breakpoints: (
+  xl: 1200px,
+  lg: 992px,
+  md: 768px,
+  sm: 576px,
+  xs: 350px
+);
+
+$brandBorderWidth: 1px;
+$brandBorderColor: $brand-primary;
+$brandBorderStyle: solid;
+
+$contentPadding: 2em 3em;
+
+$headerHeight: 5rem;
+
+$fontSize: 1rem;
+
+/* TYPOGRAPHY */
+$fontDefault: 16;
+$hyperlinkColor: $brand-secondary;

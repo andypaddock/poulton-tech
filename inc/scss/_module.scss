@@ -1,0 +1,109 @@
+/*! == MODULES == */
+
+.content-page {
+	max-width: 1600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.carousel {
+    
+    &__item {
+        @include backgroundCover; 
+        position: relative;         
+        height: 100%;
+        display: grid;
+        align-content: flex-end;
+        padding-bottom: 10%;
+    }
+    
+}
+
+.owl-stage {
+	z-index: 2;
+}
+
+.owl-nav {
+	position: absolute;
+	display: block;
+	top: 50%;
+	width: 100%;
+	z-index: 1;
+	
+	.owl-prev, .owl-next {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		transition: filter 0.3s ease;
+		
+		span {
+			display: none;
+		}
+		
+		&:focus {
+			outline: none;
+		}
+		
+		&:before {
+			content: "";
+			background: url("inc/img/arrow-shape.svg");
+			@include backgroundContain;
+			position: absolute;
+			width: 2em;
+			height: 2em;
+			cursor: pointer;
+		}
+		
+		&:hover {
+			filter: brightness(70%);
+		}
+	}
+	
+	.owl-prev {
+		left: 0;
+		
+		&:before {
+			right: 2em;
+			transform: translateY(-50%) rotate(90deg);
+		}
+	}
+	
+	.owl-next {
+		right: 0;
+		
+		&:before {
+			left: 2em;
+			transform: translateY(-50%) rotate(-90deg);
+		}
+	}
+}
+
+.owl-dots {
+	display: none;
+}
+
+.wrapper-image {
+	padding: 0.5em;
+}
+
+.gallery {
+    display: flex;
+    flex-flow: row wrap;
+    margin-top:-5px;
+    width: 100%;
+
+    a {
+        @include backgroundCover;
+        flex: auto;
+        height: 12em;
+        width: 100%;
+        margin: 0; /* Some gutter */
+        transition: transform 0.5s ease;
+        cursor: zoom-in;
+    }
+}
+
+.contact-subtitle {
+	color: $brand-primary;
+	text-transform: uppercase;
+}
